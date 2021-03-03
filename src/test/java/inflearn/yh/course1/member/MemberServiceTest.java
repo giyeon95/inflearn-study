@@ -4,6 +4,8 @@ import inflearn.yh.course1.AppConfig;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 class MemberServiceTest {
 
@@ -11,8 +13,10 @@ class MemberServiceTest {
 
     @BeforeEach
     void beforeEach() {
-        AppConfig appConfig = new AppConfig();
-        this.memberService = appConfig.memberService();
+        ApplicationContext context = new AnnotationConfigApplicationContext(
+            AppConfig.class);
+
+        this.memberService = context.getBean("memberService", MemberService.class);
     }
 
 

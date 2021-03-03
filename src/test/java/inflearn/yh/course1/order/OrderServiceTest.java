@@ -7,6 +7,8 @@ import inflearn.yh.course1.member.MemberService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 class OrderServiceTest {
 
@@ -16,10 +18,13 @@ class OrderServiceTest {
 
     @BeforeEach
     void beforeEach() {
-        AppConfig appConfig = new AppConfig();
+//        AppConfig appConfig = new AppConfig();
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        memberService = appConfig.memberService();
-        orderService = appConfig.orderService();
+        this.memberService = context.getBean("memberService", MemberService.class);
+        this.orderService = context.getBean("orderService", OrderService.class);
+//        memberService = appConfig.memberService();
+//        orderService = appConfig.orderService();
     }
 
     @Test
