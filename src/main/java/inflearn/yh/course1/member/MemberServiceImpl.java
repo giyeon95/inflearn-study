@@ -1,7 +1,10 @@
 package inflearn.yh.course1.member;
 
+import lombok.Getter;
+
 public class MemberServiceImpl implements MemberService{
 
+    @Getter
     private final MemberRepository memberRepository;
 
     public MemberServiceImpl(MemberRepository memberRepository) {

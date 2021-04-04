@@ -3,9 +3,11 @@ package inflearn.yh.course1.order;
 import inflearn.yh.course1.discount.DiscountPolicy;
 import inflearn.yh.course1.member.Member;
 import inflearn.yh.course1.member.MemberRepository;
+import lombok.Getter;
 
 public class OrderServiceImpl implements OrderService {
 
+    @Getter
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 

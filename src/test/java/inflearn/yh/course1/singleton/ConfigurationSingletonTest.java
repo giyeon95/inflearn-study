@@ -1,0 +1,45 @@
+package inflearn.yh.course1.singleton;
+
+import inflearn.yh.course1.AppConfig;
+import inflearn.yh.course1.member.MemberRepository;
+import inflearn.yh.course1.member.MemberService;
+import inflearn.yh.course1.member.MemberServiceImpl;
+import inflearn.yh.course1.order.OrderServiceImpl;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+public class ConfigurationSingletonTest {
+
+    @Test
+    void configurationTest() {
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(
+            AppConfig.class);
+
+        MemberServiceImpl memberService = ac.getBean("memberService", MemberServiceImpl.class);
+        OrderServiceImpl orderService = ac.getBean("orderService", OrderServiceImpl.class);
+        MemberRepository memberRepository2 = ac.getBean("memberRepository", MemberRepository.class);
+
+        MemberRepository memberRepository = memberService.getMemberRepository();
+        MemberRepository memberRepository1 = orderService.getMemberRepository();
+
+        System.out.println("memberService -> memberRepository = " + memberRepository);
+        System.out.println("orderService -> memberRepository1 = " + memberRepository1);
+
+        System.out.println("memberRepository2 = " + memberRepository2);
+        Assertions.assertThat(memberService.getMemberRepository()).isSameAs(orderService.getMemberRepository());
+        Assertions.assertThat(memberService.getMemberRepository()).isSameAs(memberRepository2);
+
+    }
+
+    @Test
+    void configurationDeep() {
+        AnnotationConfigApplicationContext ac= new AnnotationConfigApplicationContext(
+            AppConfig.class);
+
+        AppConfig bean = ac.getBean(AppConfig.class);
+
+        System.out.println("bean = " + bean.getClass());
+    }
+}
