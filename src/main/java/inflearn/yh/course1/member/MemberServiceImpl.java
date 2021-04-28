@@ -1,12 +1,16 @@
 package inflearn.yh.course1.member;
 
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class MemberServiceImpl implements MemberService{
+@Component
+public class MemberServiceImpl implements MemberService {
 
     @Getter
     private final MemberRepository memberRepository;
 
+    @Autowired
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

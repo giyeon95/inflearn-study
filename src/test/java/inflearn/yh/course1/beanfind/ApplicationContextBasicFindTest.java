@@ -1,4 +1,4 @@
-package beanfind;
+package inflearn.yh.course1.beanfind;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import inflearn.yh.course1.AppConfig;
 import inflearn.yh.course1.member.MemberService;
 import inflearn.yh.course1.member.MemberServiceImpl;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;

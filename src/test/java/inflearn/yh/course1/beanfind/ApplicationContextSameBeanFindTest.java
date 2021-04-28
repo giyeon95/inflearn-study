@@ -1,4 +1,4 @@
-package beanfind;
+package inflearn.yh.course1.beanfind;
 
 import static org.assertj.core.api.Assertions.*;
 

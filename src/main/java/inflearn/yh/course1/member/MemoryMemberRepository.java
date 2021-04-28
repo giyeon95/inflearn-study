@@ -2,7 +2,9 @@ package inflearn.yh.course1.member;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MemoryMemberRepository implements MemberRepository{
 
     private static Map<Long, Member> store = new ConcurrentHashMap<>();

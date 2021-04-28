@@ -2,11 +2,9 @@ package inflearn.yh.course1.singleton;
 
 import inflearn.yh.course1.AppConfig;
 import inflearn.yh.course1.member.MemberRepository;
-import inflearn.yh.course1.member.MemberService;
 import inflearn.yh.course1.member.MemberServiceImpl;
 import inflearn.yh.course1.order.OrderServiceImpl;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
