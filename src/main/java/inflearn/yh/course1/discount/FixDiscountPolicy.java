@@ -2,7 +2,9 @@ package inflearn.yh.course1.discount;
 
 import inflearn.yh.course1.member.Grade;
 import inflearn.yh.course1.member.Member;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FixDiscountPolicy implements DiscountPolicy {
 
     private int discountFixAmount = 1000;
