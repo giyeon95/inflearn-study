@@ -1,17 +1,20 @@
 package inflearn.yh.course1.lifecycle;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import lombok.Setter;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 
-public class NetworkClient {
+public class NetworkClient{
 
     @Setter
     private String url;
 
     public NetworkClient() {
         System.out.println("생성자 호출, url = " + url);
-        connect();
-        call("초기화 연결 메시지");
-
+//        connect();
+//        call("초기화 연결 메시지");
     }
 
     // start of service
@@ -28,4 +31,14 @@ public class NetworkClient {
         System.out.println("close " + url);
     }
 
+    @PostConstruct
+    public void init() {
+        connect();
+        call("초기화 연결 메시지");
+    }
+
+    @PreDestroy
+    public void close() {
+        disconnect();
+    }
 }
