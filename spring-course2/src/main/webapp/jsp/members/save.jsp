@@ -28,5 +28,6 @@
         age=<%=member.getAge()%>
     </li>
 </ul>
+<a href="/index.html">메인</a>
 </body>
 </html>
