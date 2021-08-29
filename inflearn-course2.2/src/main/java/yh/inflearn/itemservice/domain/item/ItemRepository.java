@@ -36,11 +36,14 @@ public class ItemRepository {
     }
 
     public Item update(Long id, ItemUpdateDTO itemUpdateDTO) {
-        Item findItem = findById(id);
-
-        findItem.setItemName(itemUpdateDTO.getItemName());
-        findItem.setPrice(itemUpdateDTO.getPrice());
-        findItem.setQuantity(itemUpdateDTO.getQuantity());
+        Item findItem = findById(id)
+            .setItemName(itemUpdateDTO.getItemName())
+            .setPrice(itemUpdateDTO.getPrice())
+            .setQuantity(itemUpdateDTO.getQuantity())
+            .setOpen(itemUpdateDTO.getOpen())
+            .setRegions(itemUpdateDTO.getRegions())
+            .setItemType(itemUpdateDTO.getItemType())
+            .setDeliveryCode(itemUpdateDTO.getDeliveryCode());
 
         return findItem;
     }

@@ -47,7 +47,8 @@ public class BasicItemController {
     }
 
     @GetMapping("/add")
-    public String addItem() {
+    public String addItem(Model model) {
+        model.addAttribute("item", new Item());
         return "/basic/addForm";
     }
 
@@ -64,9 +65,13 @@ public class BasicItemController {
             .itemName(item.getItemName())
             .price(item.getPrice())
             .quantity(item.getQuantity())
+            .open(item.getOpen())
+            .itemType(item.getItemType())
+            .deliveryCode(item.getDeliveryCode())
+            .regions(item.getRegions())
             .build());
 
-        return "redirect:/basic/item/{itemId}";
+        return "redirect:/basic/items/{itemId}";
     }
 
 
