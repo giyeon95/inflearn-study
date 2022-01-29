@@ -27,4 +27,12 @@ public class Member {
 
         return loginId.equals(this.loginId);
     }
+
+    public boolean equalsPassword(String password) {
+        if(Objects.isNull(password)) {
+            return false;
+        }
+
+        return password.equals(this.password);
+    }
 }
