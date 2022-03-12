@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 @Slf4j
 @Controller
@@ -60,7 +61,6 @@ public class HomeController {
         return "loginHome";
     }
 
-    @GetMapping
     public String homeLoginV3(
         HttpServletRequest request,
         Model model
@@ -78,6 +78,19 @@ public class HomeController {
         }
 
         model.addAttribute("member", loginMember);
+        return "loginHome";
+    }
+
+    @GetMapping
+    public String homeLoginV3Spring(
+        @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member member,
+        Model model
+    ) {
+        if (member == null) {
+            return "home";
+        }
+
+        model.addAttribute("member", member);
         return "loginHome";
     }
 }
