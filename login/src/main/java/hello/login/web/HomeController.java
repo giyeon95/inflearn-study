@@ -2,6 +2,7 @@ package hello.login.web;
 
 import hello.login.domain.member.Member;
 import hello.login.domain.member.MemberRepository;
+import hello.login.web.argumentresolver.Login;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -81,9 +82,22 @@ public class HomeController {
         return "loginHome";
     }
 
-    @GetMapping
+//    @GetMapping
     public String homeLoginV3Spring(
         @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member member,
+        Model model
+    ) {
+        if (member == null) {
+            return "home";
+        }
+
+        model.addAttribute("member", member);
+        return "loginHome";
+    }
+
+    @GetMapping
+    public String homeLoginV3ArgumentResolver(
+        @Login Member member,
         Model model
     ) {
         if (member == null) {
