@@ -1,5 +1,6 @@
 package com.hello.typeconverter.controller;
 
+import com.hello.typeconverter.type.IpPort;
 import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,4 +25,11 @@ public class HelloController {
         System.out.println("data = " + data);
         return "ok";
     }
+
+    @GetMapping("/ip-port")
+    public String ipPort(@RequestParam IpPort ipPort) {
+        System.out.println("ipPort = " + ipPort);
+        return "ok";
+    }
+
 }
