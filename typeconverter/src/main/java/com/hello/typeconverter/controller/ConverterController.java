@@ -34,7 +34,6 @@ public class ConverterController {
         IpPort ipPort = form.ipPort();
         model.addAttribute("ipPort", ipPort);
 
-
         return "converter-view";
     }
 
