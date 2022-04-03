@@ -23,9 +23,7 @@ public class ConverterController {
     public String converterForm(Model model) {
         IpPort ipPort = new IpPort("127.0.0.1", 8080);
 
-
         model.addAttribute("form", new Form(ipPort));
-
         return "converter-form";
     }
 
