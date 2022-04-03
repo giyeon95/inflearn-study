@@ -22,28 +22,6 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("/v2/api")
 public class ApiExceptionV2Controller {
 
-    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ErrorResult illegalArgumentExceptionHandler(IllegalArgumentException e) {
-        log.error("[exceptionHandler] ex", e);
-        return new ErrorResult(HttpStatus.BAD_REQUEST.name(), e.getMessage());
-    }
-
-    @ExceptionHandler(UserException.class)
-    public ResponseEntity<ErrorResult> userExHandler(UserException e) {
-        log.error("[exceptionHandler] ex", e);
-        ErrorResult errorResult = new ErrorResult("USER_EX", e.getMessage());
-
-        return new ResponseEntity<>(errorResult, HttpStatus.BAD_REQUEST);
-    }
-
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler
-    public ErrorResult exHandler(Exception e) {
-        log.error("[exceptionHandler] ex", e);
-        return new ErrorResult("EX", "내부 오류");
-    }
-
     @GetMapping("/members/{id}")
     public MemberDtoV2 getMember(@PathVariable("id") String id) {
 
